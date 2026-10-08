@@ -1,0 +1,11 @@
+{
+  "name": "yueyouyu-budget-regression-tests",
+  "version": "1.2.0",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/model.test.js tests/import-dom.test.js tests/food-model.test.js tests/food-dom.test.js"
+  },
+  "devDependencies": {
+    "jsdom": "26.1.0"
+  }
+}

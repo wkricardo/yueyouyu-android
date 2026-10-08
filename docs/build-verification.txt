@@ -1,0 +1,43 @@
+warning: [options] bootstrap class path not set in conjunction with -source 8
+warning: [options] source value 8 is obsolete and will be removed in a future release
+warning: [options] target value 8 is obsolete and will be removed in a future release
+warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+4 warnings
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): true
+Verified using v3 scheme (APK Signature Scheme v3): true
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: CN=Yueyouyu Local App, O=Personal App, C=CN
+Signer #1 certificate SHA-256 digest: 42932ba6fc75b6e1e216b8def10e4af37bb73e6ebc9c3b94d5d6e7206b8bd5fb
+Signer #1 certificate SHA-1 digest: 407b68655505aa987b7e38b51397e7f7e0e074b2
+Signer #1 certificate MD5 digest: 5a146f0685937d3af205fef92456aab2
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 3072
+Signer #1 public key SHA-256 digest: e2df44c87092c95a9a9a86bce8533373a0d941c9e5c4c2115451eb8fd7496c7a
+Signer #1 public key SHA-1 digest: 7de933f5bd9ce6c37d8d7d00311e51d2b5ed48e5
+Signer #1 public key MD5 digest: f56cfc9341f237b41f3a5ffa6ad6306c
+package: name='cn.dot.budget' versionCode='5' versionName='1.2.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+minSdkVersion:'26'
+targetSdkVersion:'36'
+uses-permission: name='android.permission.POST_NOTIFICATIONS'
+uses-permission: name='android.permission.INTERNET'
+uses-permission: name='android.permission.REQUEST_INSTALL_PACKAGES'
+application-label:'月有余'
+application-icon-160:'res/drawable/ic_launcher.xml'
+application: label='月有余' icon='res/drawable/ic_launcher.xml'
+launchable-activity: name='cn.dot.budget.MainActivity'  label='' icon=''
+feature-group: label=''
+  uses-feature: name='android.hardware.faketouch'
+  uses-implied-feature: name='android.hardware.faketouch' reason='default feature for all apps'
+main
+supports-screens: 'small' 'normal' 'large' 'xlarge'
+supports-any-density: 'true'
+locales: '--_--'
+densities: '160'
+93233f14d82e728d4cb3eeed61f4a0f283fd7cfeb5f922ffd711fef666a432a0  dist/yueyouyu-1.2.0.apk
