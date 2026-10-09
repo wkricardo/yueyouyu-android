@@ -16,6 +16,7 @@ import org.json.JSONObject;
 
 public class MainActivity extends Activity {
  private WebView web;
+ private Object backCallback;
  private StatementImport statementImport;
  private GitHubUpdater updater;
  private boolean updateChecked=false,cameraPending=false;
@@ -26,13 +27,14 @@ public class MainActivity extends Activity {
  private static final int EXPORT=10, IMPORT=11;
  @Override public void onCreate(Bundle state) {
   super.onCreate(state);
-  getWindow().setStatusBarColor(Color.rgb(247,247,239));
-  getWindow().setNavigationBarColor(Color.rgb(247,247,239));
+  getWindow().setStatusBarColor(Color.rgb(244,248,252));
+  getWindow().setNavigationBarColor(Color.rgb(244,248,252));
+  getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR|View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
   web=new WebView(this);
   statementImport=new StatementImport(this,json->web.evaluateJavascript("window.receiveRecognition("+JSONObject.quote(json)+")",null),json->web.evaluateJavascript("window.receiveFoodRecognition("+JSONObject.quote(json)+")",null));
   cameraPending=state!=null&&state.getBoolean("cameraPending",false);
   updater=new GitHubUpdater(this,status->web.evaluateJavascript("window.receiveUpdateStatus && window.receiveUpdateStatus("+JSONObject.quote(status)+")",null));
-  web.setBackgroundColor(Color.rgb(247,247,239));
+  web.setBackgroundColor(Color.rgb(244,248,252));
   web.getSettings().setJavaScriptEnabled(true);
   web.getSettings().setDomStorageEnabled(true);
   web.getSettings().setAllowFileAccess(false);
@@ -56,6 +58,7 @@ public class MainActivity extends Activity {
    @Override public boolean shouldOverrideUrlLoading(WebView v,WebResourceRequest r){return !"app.local".equals(r.getUrl().getHost());}
   });
   setContentView(web);
+  if(Build.VERSION.SDK_INT>=33)backCallback=Api33Back.register(this,()->routeBack());
   if(Build.VERSION.SDK_INT>=35)web.setOnApplyWindowInsetsListener((v,insets)->{android.graphics.Insets bars=insets.getInsets(WindowInsets.Type.systemBars()|WindowInsets.Type.displayCutout()|WindowInsets.Type.ime());v.setPadding(bars.left,bars.top,bars.right,bars.bottom);return insets;});
   NotificationManager nm=getSystemService(NotificationManager.class);
   nm.createNotificationChannel(new NotificationChannel("budget","预算提醒",NotificationManager.IMPORTANCE_DEFAULT));
@@ -83,6 +86,11 @@ public class MainActivity extends Activity {
  private void captureFood(){if(cameraPending)return;try{File image=new File(getCacheDir(),"food-capture.jpg");if(image.exists())image.delete();image.createNewFile();Intent intent=new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE).putExtra(android.provider.MediaStore.EXTRA_OUTPUT,CAMERA_URI).addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION|Intent.FLAG_GRANT_WRITE_URI_PERMISSION);intent.setClipData(ClipData.newRawUri("食物照片",CAMERA_URI));cameraPending=true;startActivityForResult(intent,FOOD_CAMERA);}catch(Exception e){cameraPending=false;new File(getCacheDir(),"food-capture.jpg").delete();toast("无法打开系统相机，请选择已有食物照片");}}
  @Override protected void onSaveInstanceState(Bundle state){state.putBoolean("cameraPending",cameraPending);super.onSaveInstanceState(state);}
  private void toast(String s){Toast.makeText(this,s,Toast.LENGTH_LONG).show();}
- @Override public void onBackPressed(){web.evaluateJavascript("window.handleBack ? window.handleBack() : false",v->{if(!"true".equals(v))super.onBackPressed();});}
- @Override protected void onDestroy(){updater.destroy();statementImport.destroy();web.removeJavascriptInterface("Android");web.destroy();super.onDestroy();}
+ private void routeBack(){if(web==null||isFinishing())return;web.evaluateJavascript("window.handleBack ? window.handleBack() : false",v->{if(!"true".equals(v))finish();});}
+ @Override public void onBackPressed(){routeBack();}
+ private static final class Api33Back {
+  static Object register(Activity activity,Runnable action){android.window.OnBackInvokedCallback callback=action::run;activity.getOnBackInvokedDispatcher().registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,callback);return callback;}
+  static void unregister(Activity activity,Object callback){if(callback!=null)activity.getOnBackInvokedDispatcher().unregisterOnBackInvokedCallback((android.window.OnBackInvokedCallback)callback);}
+ }
+ @Override protected void onDestroy(){if(Build.VERSION.SDK_INT>=33)Api33Back.unregister(this,backCallback);updater.destroy();statementImport.destroy();web.removeJavascriptInterface("Android");web.destroy();super.onDestroy();}
 }
