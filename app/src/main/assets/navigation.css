@@ -1,0 +1,27 @@
+/* Both modes use the same geometry and icon vocabulary. */
+.floating-navigation .navigation-destination{font-size:12px;min-width:0;min-height:54px;line-height:1.45;color:var(--muted)}
+.floating-navigation .navigation-destination>span{display:grid;place-items:center;height:26px;margin:0 0 4px}
+.floating-navigation svg{display:block;width:24px;height:24px}
+.floating-navigation .navigation-destination[aria-current=page]{color:var(--accent-ink);font-weight:700;background:var(--accent-soft);border-radius:17px}
+.floating-navigation .navigation-destination:focus-visible{outline:3px solid var(--accent-ink);outline-offset:2px}
+/* The opaque surface is the default, including older WebViews. */
+#budget-nav.floating-navigation,#wellness-nav.floating-navigation{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);width:calc(100% - 28px);max-width:612px;display:flex;gap:5px;padding:8px;border:1px solid #dce4ec;border-radius:25px;background:#f8fafc;box-shadow:0 9px 30px #263e5926,0 2px 5px #263e590a;backdrop-filter:none;-webkit-backdrop-filter:none;isolation:isolate;z-index:5}
+#budget-nav.floating-navigation[hidden],#wellness-nav.floating-navigation[hidden]{display:none!important}
+.floating-navigation .navigation-destination{position:relative;flex:1;padding:6px 3px;background:transparent}
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ #budget-nav.floating-navigation,#wellness-nav.floating-navigation{background:rgba(248,250,252,.94);border-color:rgba(214,224,234,.96);backdrop-filter:blur(20px) saturate(1.15);-webkit-backdrop-filter:blur(20px) saturate(1.15);box-shadow:0 10px 32px #263e5924,inset 0 1px 0 #ffffff}
+}
+@media(prefers-reduced-transparency:reduce){#budget-nav.floating-navigation,#wellness-nav.floating-navigation{background:#f8fafc;backdrop-filter:none;-webkit-backdrop-filter:none}}
+@media(forced-colors:active){#budget-nav.floating-navigation,#wellness-nav.floating-navigation{background:Canvas;border:1px solid ButtonText;backdrop-filter:none;-webkit-backdrop-filter:none}.floating-navigation .navigation-destination[aria-current=page]{outline:2px solid Highlight;outline-offset:-3px}}
+:root{--navigation-clearance:calc(116px + env(safe-area-inset-bottom,0px))}
+body .app,body.wellness-mode .app{padding-bottom:var(--navigation-clearance)}
+#budget-nav.floating-navigation,#wellness-nav.floating-navigation{bottom:calc(12px + env(safe-area-inset-bottom,0px));width:calc(100% - 28px - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px))}
+main{scroll-padding-bottom:var(--navigation-clearance)}
+main input,main button,main select{scroll-margin-bottom:var(--navigation-clearance)}
+body.navigation-keyboard-open .floating-navigation,body.navigation-dialog-open .floating-navigation{display:none!important}
+@media(max-width:380px){#budget-nav.floating-navigation,#wellness-nav.floating-navigation{width:calc(100% - 20px - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px));gap:3px;padding:7px;border-radius:23px}}
+@media(max-height:520px) and (orientation:landscape){#budget-nav.floating-navigation,#wellness-nav.floating-navigation{bottom:calc(6px + env(safe-area-inset-bottom,0px))}}
+@media(prefers-reduced-motion:reduce){.floating-navigation,.floating-navigation *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+/* Keep small labels above 4.5:1 even with dark content beneath the glass. */
+.floating-navigation .navigation-destination{color:#526175}
+.floating-navigation .navigation-destination[aria-current=page]{color:var(--accent-ink)}
