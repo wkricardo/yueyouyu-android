@@ -17,7 +17,7 @@ cp build/base.apk build/unsigned.apk
 if [[ -z "${SIGNING_KEYSTORE:-}" ]]; then
   echo 'Set SIGNING_KEYSTORE, SIGNING_ALIAS and SIGNING_PASSWORD for your own key.' >&2; exit 1
 fi
-"$BT/apksigner" sign --ks "$SIGNING_KEYSTORE" --ks-key-alias "${SIGNING_ALIAS:-budget}" --ks-pass env:SIGNING_PASSWORD --out dist/yueyouyu-1.4.0.apk build/aligned.apk
-"$BT/apksigner" verify --verbose --print-certs dist/yueyouyu-1.4.0.apk
-"$BT/aapt2" dump badging dist/yueyouyu-1.4.0.apk
-sha256sum dist/yueyouyu-1.4.0.apk
+"$BT/apksigner" sign --ks "$SIGNING_KEYSTORE" --ks-key-alias "${SIGNING_ALIAS:-budget}" --ks-pass env:SIGNING_PASSWORD --out dist/yueyouyu-2.0.0.apk build/aligned.apk
+"$BT/apksigner" verify --verbose --print-certs dist/yueyouyu-2.0.0.apk
+"$BT/aapt2" dump badging dist/yueyouyu-2.0.0.apk
+sha256sum dist/yueyouyu-2.0.0.apk
