@@ -1,0 +1,3 @@
+Note: app/src/main/java/cn/dot/budget/DeepSeekTransport.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+PASS independent review: 176 pure-JVM assertions; Android pixel/UI/device paths not executed.

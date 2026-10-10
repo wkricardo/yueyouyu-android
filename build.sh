@@ -6,6 +6,8 @@ cd "$(dirname "$0")"
 export JAVA_HOME PATH="$JAVA_HOME/bin:$PATH"
 BT="$ANDROID_HOME/build-tools/36.0.0"
 JAR="$ANDROID_HOME/platforms/android-36/android.jar"
+# Generated intermediates only: never let removed Java classes leak into a later APK.
+rm -rf -- build/classes build/generated build/dex
 mkdir -p build/classes build/generated build/dex dist
 "$BT/aapt2" compile --dir app/src/main/res -o build/resources.zip
 "$BT/aapt2" link -o build/base.apk -I "$JAR" --manifest app/src/main/AndroidManifest.xml --java build/generated -A app/src/main/assets build/resources.zip
@@ -17,7 +19,7 @@ cp build/base.apk build/unsigned.apk
 if [[ -z "${SIGNING_KEYSTORE:-}" ]]; then
   echo 'Set SIGNING_KEYSTORE, SIGNING_ALIAS and SIGNING_PASSWORD for your own key.' >&2; exit 1
 fi
-"$BT/apksigner" sign --ks "$SIGNING_KEYSTORE" --ks-key-alias "${SIGNING_ALIAS:-budget}" --ks-pass env:SIGNING_PASSWORD --out dist/yueyouyu-4.0.0.apk build/aligned.apk
-"$BT/apksigner" verify --verbose --print-certs dist/yueyouyu-4.0.0.apk
-"$BT/aapt2" dump badging dist/yueyouyu-4.0.0.apk
-sha256sum dist/yueyouyu-4.0.0.apk
+"$BT/apksigner" sign --ks "$SIGNING_KEYSTORE" --ks-key-alias "${SIGNING_ALIAS:-budget}" --ks-pass env:SIGNING_PASSWORD --out dist/yueyouyu-4.0.1.apk build/aligned.apk
+"$BT/apksigner" verify --verbose --print-certs dist/yueyouyu-4.0.1.apk
+"$BT/aapt2" dump badging dist/yueyouyu-4.0.1.apk
+sha256sum dist/yueyouyu-4.0.1.apk

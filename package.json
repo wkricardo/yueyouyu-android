@@ -1,9 +1,9 @@
 {
   "name": "yueyouyu-budget-regression-tests",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "private": true,
   "scripts": {
-    "test": "node --test tests/model.test.js tests/import-dom.test.js tests/food-model.test.js tests/food-dom.test.js tests/favorites-model.test.js tests/favorites-dom.test.js tests/select-sheet-dom.test.js tests/theme-dom.test.js tests/energy-model.test.js tests/energy-dom.test.js tests/wellness-dom.test.js tests/unified-shell-dom.test.js tests/ai-contract-review.test.js"
+    "test": "node --test tests/model.test.js tests/import-dom.test.js tests/food-model.test.js tests/food-dom.test.js tests/favorites-model.test.js tests/favorites-dom.test.js tests/select-sheet-dom.test.js tests/theme-dom.test.js tests/energy-model.test.js tests/energy-dom.test.js tests/wellness-dom.test.js tests/unified-shell-dom.test.js tests/ai-contract-review.test.js tests/consent-dom.test.js"
   },
   "devDependencies": {
     "jsdom": "26.1.0"

@@ -6,17 +6,20 @@ import java.nio.charset.StandardCharsets;
 /** Production endpoint is fixed; no redirects, retries, logging, or third-party relay. */
 public final class DeepSeekTransport {
  public static final class Failure extends IOException {public final String code;public Failure(String code,String message){super(message);this.code=code;}}
+ public static final int MAX_REQUEST_BYTES=15_000_000;
  public static final String ENDPOINT="https://api.deepseek.com/chat/completions";
  private volatile HttpURLConnection active;
  private volatile boolean cancelled;
  public String send(String key,String payload)throws IOException{return sendTo(new URL(ENDPOINT),key,payload);}
  String sendTo(URL url,String key,String payload)throws IOException{
   if(cancelled)throw new Failure("cancelled","已取消");
+  if(payload==null||payload.isEmpty()||payload.length()>MAX_REQUEST_BYTES)throw new Failure("input","图片请求过大");
+  byte[] bytes=payload.getBytes(StandardCharsets.UTF_8);if(bytes.length>MAX_REQUEST_BYTES)throw new Failure("input","图片请求过大");
   HttpURLConnection c=(HttpURLConnection)url.openConnection();synchronized(this){if(cancelled){c.disconnect();throw new Failure("cancelled","已取消");}active=c;}
   try{
    c.setRequestMethod("POST");c.setInstanceFollowRedirects(false);c.setConnectTimeout(20000);c.setReadTimeout(120000);c.setDoOutput(true);
    c.setRequestProperty("Authorization","Bearer "+key);c.setRequestProperty("Content-Type","application/json; charset=utf-8");
-   byte[] bytes=payload.getBytes(StandardCharsets.UTF_8);c.setFixedLengthStreamingMode(bytes.length);
+   c.setFixedLengthStreamingMode(bytes.length);
    if(cancelled)throw new Failure("cancelled","已取消");
    try(OutputStream out=c.getOutputStream()){if(cancelled)throw new Failure("cancelled","已取消");out.write(bytes);}
    if(cancelled)throw new Failure("cancelled","已取消");

@@ -22,7 +22,7 @@ Signer #1 key size (bits): 3072
 Signer #1 public key SHA-256 digest: e2df44c87092c95a9a9a86bce8533373a0d941c9e5c4c2115451eb8fd7496c7a
 Signer #1 public key SHA-1 digest: 7de933f5bd9ce6c37d8d7d00311e51d2b5ed48e5
 Signer #1 public key MD5 digest: f56cfc9341f237b41f3a5ffa6ad6306c
-package: name='cn.dot.budget' versionCode='10' versionName='4.0.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+package: name='cn.dot.budget' versionCode='11' versionName='4.0.1' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
 minSdkVersion:'26'
 targetSdkVersion:'36'
 uses-permission: name='android.permission.POST_NOTIFICATIONS'
@@ -40,4 +40,4 @@ supports-screens: 'small' 'normal' 'large' 'xlarge'
 supports-any-density: 'true'
 locales: '--_--'
 densities: '160'
-0802ef7ecaf86679e8a180b3a6e905f495c7257c46dbe4f64eea22a906a115b9  dist/yueyouyu-4.0.0.apk
+95e7a349063209a5e2e9b202dfb280ddca77aa5176d65b1ff7fad0e9a2df3b03  dist/yueyouyu-4.0.1.apk
