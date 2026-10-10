@@ -1,0 +1,115 @@
+.ai-compose { max-width: 640px; background: var(--surface, #fff); color: var(--text, #1d2d39); }
+.ai-compose textarea { box-sizing: border-box; width: 100%; min-height: 150px; resize: vertical; padding: 14px; border: 1px solid #788a96; border-radius: 14px; color: inherit; background: inherit; font: inherit; line-height: 1.6; }
+.ai-compose .ai-input-error { color: #a12b29; min-height: 1.5em; }
+.ai-compose button { min-height: 48px; }
+.ai-text-entry { margin-top: 10px; }
+
+.ai-field-state { display:block; font-size:.78rem; color:#526475; font-weight:400; }
+.ai-field-state[data-state="invalid"], .ai-field-state[data-state="missing"] { color:#96401e; }
+.ai-field-state[data-state="user-corrected"] { color:#285b45; }
+
+.ai-type-effect { display:block; padding:8px 0 0; color:var(--text,#243d4b); font-weight:400; line-height:1.5; }
+
+.ai-field-state[data-state="supplied"], .ai-field-state[data-state="missing"][data-optional="true"] { display:none; }
+.ai-review-issues { padding:14px; margin:16px 0; border:1px solid var(--border,#c5d0d6); border-radius:16px; background:var(--surface,#fff); }
+.ai-review-issues p { margin:0 0 10px; }
+.ai-review-fields { border:0; padding:0; }
+.ai-review-card-summary { min-height:48px; cursor:pointer; padding:12px 0; font-weight:600; line-height:1.5; overflow-wrap:anywhere; }
+.ai-review-fields[open] .ai-review-card-summary { margin-bottom:12px; }
+
+.ai-restore-field { justify-self:start; min-height:48px; text-align:left; font-size:.82rem; }
+
+.ai-question-list { display:grid; gap:8px; margin:8px 0; }
+.ai-question-list button { text-align:left; min-height:48px; white-space:normal; }
+#ai-review-resubmit { margin:6px 0; white-space:normal; }
+
+.ai-compare-actions { display:grid; gap:10px; margin-top:16px; }
+#ai-compare-changes { padding-left:22px; overflow-wrap:anywhere; line-height:1.6; }
+
+.ai-save-summary { line-height:1.6; margin:8px 0 14px; color:var(--text,#243d4b); overflow-wrap:anywhere; }
+
+.ai-food-missing { color:#96401e; line-height:1.6; padding:12px; border:1px solid #b78062; border-radius:12px; }
+
+.ai-food-basis { margin:12px 0 18px; padding:14px; border:1px solid var(--border,#c5d0d6); border-radius:16px; background:var(--surface,#fff); }
+.ai-food-basis h3 { margin:0 0 10px; }
+.ai-food-basis button { min-height:48px; white-space:normal; }
+
+.ai-food-save-summary { padding:10px 0; line-height:1.5; }
+.ai-food-save-summary p { margin:0 0 8px; }
+
+.ai-food-saved { padding:16px; margin:16px 0; border:1px solid var(--border,#c5d0d6); border-radius:18px; background:var(--surface,#fff); line-height:1.5; }
+.ai-food-saved h3 { margin:0 0 8px; }
+.ai-food-saved button { min-height:48px; }
+
+.ai-food-unrecognized { padding:14px; margin:14px 0; border:1px solid #b78062; border-radius:14px; background:var(--surface,#fff); line-height:1.5; }
+.ai-food-unrecognized .button-row { flex-wrap:wrap; }
+.ai-food-unrecognized button { min-height:48px; }
+
+.ai-task-status { margin:12px 0; padding:12px 14px; border:1px solid var(--border,#c5d0d6); border-radius:14px; background:var(--surface,#fff); color:var(--text,#243d4b); line-height:1.5; }
+.ai-task-status p { margin:0 0 8px; }
+.ai-task-status button { min-height:48px; }
+
+#ai-date-settings, #ai-save-breakdown, .ai-duplicate-proof, #ai-food-basis-policy, #ai-food-origin-note { margin:12px 0; }
+#ai-date-settings > summary, #ai-save-breakdown > summary, .ai-duplicate-proof > summary, #ai-food-basis-policy > summary, #ai-food-origin-note > summary { min-height:48px; padding:12px 0; cursor:pointer; }
+.ai-duplicate-proof ul { padding-left:22px; line-height:1.6; overflow-wrap:anywhere; }
+
+/* AI-only adaptive sheets: solid content stays readable above the keyboard. */
+#review-dialog, #food-dialog, .ai-compose { box-sizing:border-box; overflow-x:hidden; overscroll-behavior:contain; }
+#review-dialog *, #food-dialog *, .ai-compose * { box-sizing:border-box; }
+.ai-compose { width:calc(100% - 24px); max-width:640px; max-height:calc(100vh - 24px); max-height:calc(100dvh - 24px); padding:20px; overflow-y:auto; }
+.ai-compose .section-head { align-items:flex-start; gap:12px; }
+.ai-compose h2, #review-dialog h2, #food-dialog h2 { min-width:0; overflow-wrap:anywhere; }
+#review-dialog button, #food-dialog button, .ai-compose button { min-height:48px; white-space:normal; overflow-wrap:anywhere; line-height:1.5; }
+#review-dialog .icon-btn, #food-dialog .icon-btn, .ai-compose .icon-btn { width:48px; min-width:48px; height:48px; flex-shrink:0; }
+#review-dialog input, #review-dialog .select-trigger, #food-dialog input, #food-dialog .select-trigger, .ai-compose textarea { min-width:0; max-width:100%; font-size:1rem; }
+#review-dialog .review-check { min-height:48px; }
+#review-dialog .button-row, #food-dialog .ai-food-unrecognized .button-row, .ai-compose .button-row { flex-wrap:wrap; }
+.ai-portion-choices { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+.ai-portion-choices #ai-food-manual { grid-column:1 / -1; }
+#review-dialog :is(input,button,.select-trigger), #food-dialog :is(input,button,.select-trigger) { scroll-margin-top:100px; scroll-margin-bottom:210px; }
+#review-dialog .budget-entry-footer, #food-dialog .wellness-entry-footer { padding-bottom:max(16px,env(safe-area-inset-bottom,0px)); }
+body.navigation-keyboard-open #review-dialog .budget-entry-footer, body.navigation-keyboard-open #food-dialog .wellness-entry-footer { position:static; }
+@media(max-width:380px) {
+ #review-dialog, #food-dialog { padding-left:12px; padding-right:12px; }
+ .ai-compose { width:calc(100% - 12px); padding:14px; }
+ #review-dialog #review-list > .setting-card, .ai-food-basis { padding:12px; }
+ .ai-portion-choices { gap:8px; }
+ #ai-select-valid, #ai-select-none, #ai-food-scale { width:100%; }
+}
+@media(max-height:560px) {
+ #review-dialog > .section-head, #review-dialog .budget-entry-footer, #food-dialog form > .section-head, #food-dialog .wellness-entry-footer { position:static; }
+ .ai-compose textarea { min-height:100px; }
+}
+@media(min-width:960px) {
+ #review-dialog { max-width:940px; padding-left:28px; padding-right:28px; }
+ #review-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:start; gap:16px; }
+ #review-list > .setting-card { margin:0; min-width:0; }
+ #review-dialog .budget-entry-footer { display:flex; align-items:center; gap:20px; }
+ #review-dialog .budget-entry-footer .primary { margin-left:auto; width:auto; min-width:220px; }
+ #food-dialog { max-width:760px; }
+}
+
+.ai-form-error { color:#963322; background:#fff7f3; border:1px solid #b35a43; border-radius:12px; padding:12px; line-height:1.5; }
+#review-dialog [aria-invalid="true"], #food-dialog [aria-invalid="true"] { border-color:#963322; border-width:2px; }
+#review-dialog :focus-visible, #food-dialog :focus-visible, .ai-compose :focus-visible, .ai-task-status :focus-visible { outline:3px solid #285d82; outline-offset:3px; }
+.ai-portion-choices button[aria-pressed="true"] { border:2px solid #285d82; font-weight:700; }
+@media(prefers-reduced-motion:reduce) {
+ #review-dialog *, #food-dialog *, .ai-compose *, .ai-task-status * { animation:none!important; transition:none!important; scroll-behavior:auto!important; }
+}
+@media(prefers-contrast:more) {
+ .ai-food-basis, .ai-food-saved, .ai-task-status, .ai-review-issues { border:2px solid #344959; background:#fff; color:#172c3a; }
+ .ai-field-state, .ai-form-error, .ai-food-missing { color:#512519; }
+}
+@media(forced-colors:active) {
+ #review-dialog, #food-dialog, .ai-compose, .ai-task-status, .ai-food-basis, .ai-form-error { background:Canvas; color:CanvasText; border-color:CanvasText; }
+ .ai-portion-choices button[aria-pressed="true"], #review-dialog :focus-visible, #food-dialog :focus-visible, .ai-compose :focus-visible { outline:3px solid Highlight; border-color:Highlight; }
+}
+
+/* Session-only handoffs never cover or replace an active manual form. */
+.ai-handoff { margin:12px 0; padding:14px; border:1px solid var(--border,#c5d0d6); border-radius:14px; background:var(--surface,#fff); color:var(--text,#243d4b); line-height:1.6; }
+.ai-handoff p { margin:8px 0; }
+.ai-handoff button, .ai-handoff summary { min-height:48px; white-space:normal; overflow-wrap:anywhere; }
+.ai-handoff .button-row { flex-wrap:wrap; }
+#ai-manual-reference-text { white-space:pre-wrap; overflow-wrap:anywhere; max-height:160px; overflow:auto; }
+.ai-handoff :focus-visible { outline:3px solid #285d82; outline-offset:3px; }
+@media(forced-colors:active) { .ai-handoff { background:Canvas; color:CanvasText; border-color:CanvasText; } }

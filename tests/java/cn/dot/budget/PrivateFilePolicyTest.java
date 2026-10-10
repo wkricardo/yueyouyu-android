@@ -8,6 +8,7 @@ public class PrivateFilePolicyTest{
   for(String path:new String[]{"/","/apk/../secret","/images/../../secret","/shared_prefs/deepseek-secure.xml","/images/capture.jpg/else","/images/%2e%2e/secret"})bad("cn.dot.budget.files",path,"r");
   for(String mode:new String[]{"w","rw","wt","rwt","a"})bad("cn.dot.budget.files","/apk/update.apk",mode);
   bad("evil","/images/capture.jpg","r");bad("cn.dot.budget.files:80","/images/capture.jpg","r");bad("cn.dot.budget.files","/images/capture.jpg",null);
+  String name=AiCapturePath.acquire(),path=AiCapturePath.path(name);for(String mode:new String[]{"r","w","wt","rw","rwt"})good(path,mode,name);for(String invalid:new String[]{path+"/extra",path.replace("/images/","/images/../"),"/images/capture-not-a-uuid.jpg","/images/capture-00000000-0000-0000-0000-000000000000.jpg",path.toUpperCase(),"/images/capture-*.jpg"})bad("cn.dot.budget.files",invalid,"rw");bad("evil",path,"r");bad("cn.dot.budget.files",path,"a");AiCapturePath.release(name);
   System.out.println("PASS: "+checks+" exact-path/private-provider access assertions");
  }
 }

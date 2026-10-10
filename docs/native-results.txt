@@ -2,4 +2,4 @@ Note: Some input files use or override a deprecated API.
 Note: Recompile with -Xlint:deprecation for details.
 PASS: 21 mocked transport assertions. No network, real API key, screenshot or paid API call used.
 UpdaterTest passed: 66 assertions (mock-only)
-PASS: 18 exact-path/private-provider access assertions
+PASS: 31 exact-path/private-provider access assertions

@@ -1,0 +1,5 @@
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+PASS: 1244 independent AI contract/session/snapshot/cancellation assertions; no network or real data.
+PASS: 53 parsed production-payload assertions; exact approved bytes, no hidden context.
+PASS: 23 independent Node text-payload assertions; exact Unicode/quote/control text and fixed prompt only.

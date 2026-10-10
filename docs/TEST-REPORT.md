@@ -1,18 +1,17 @@
-# Android 3.0.0 verification
-
-## Twenty real iterations
-Budget route architecture, shared icons, glass navigation, safe-area/keyboard handling, period header, monthly ring, transaction metrics, category warnings, daily caps, quick entries, ledger filters, grouped timeline, cashflow chart, signed category chart, plan editor, shared settings, transaction editor, screenshot review, accessible narrow-screen styling, and interruption hardening were implemented sequentially. Each has a distinct archive, SHA256 and passing test transcript: see ITERATIONS-V3.md. Only final publication is intended.
+# Android 4.0.0 verification
 
 ## Passed
-136 model and actual app.js/jsdom tests pass, including21 independently written unified-shell integration tests. 105 native mock assertions pass:21 transport,66 updater,18 private-file policy. model.js, wellness.js/css and native source remain byte-identical to v2.0.0; existing schema5 and storage semantics are preserved.
+50 sequential implementation checkpoints each contain a distinct production-source delta, SHA256 manifest and successful test transcript. See ITERATIONS-V4.md and the separate evidence archive.
 
-New tests cover four budget routes, cross-mode return, exact integer-cent transaction/refund/income/transfer/repayment totals,80%/over-budget boundaries, monthly signed ring and zero target, selected-day caps, quick entries, filters/group subtotals, full-month refund-aware cashflow/real calendar spacing, signed category drilldown, budget draft validation, full-screen modal opener focus/repeated submits, review replacement/cancellation, dynamic nested select sheets, keyboard versus ordinary resize, modal-local error visibility, true last-opened-first Back handling, invalid month/day recovery and leap bounds. Existing115 tests cover health/food, import dates, backup migration and prior privacy rules.
+211 JavaScript tests pass, including 75 independently written AI contract and actual app.js/jsdom cases. Pure JVM tests pass 1,244 AI assertions. Independent Node JSON.parse checks pass 53 image-payload and 23 text-payload assertions. Original native mock tests pass 118 assertions: 21 transport, 66 updater and 31 exact private-file provider cases.
+
+Coverage includes immutable exact consent payloads; no hidden history/profile context; stale request, input revision, cancellation, lifecycle and key-clear rejection; strict JSON/schema/UTF8 limits; image allocation and output limits; one-use picker codes and unique camera URI mapping; typed error/manual retry; exact-cents financial repair and duplicates; year provenance; batch-save idempotency; food unknown values, immutable portion scaling, label takeover, date binding and canonical-only storage; deferred result viewing, visible shared status and modal Cancel accessibility; literal-text offline handoff. Existing accounting, budget80% boundaries, health arithmetic, favorites, backups and navigation regressions remain covered.
 
 ## Integrity
-Package cn.dot.budget, version3.0.0/code9, original pinned certificate, APK v2/v3 signatures. build-verification.txt contains package/signature/checksum evidence. Independent checks compare final APK assets, source stage, all20 snapshots/manifests and public privacy. No signing private material, actual user photos, records, health profiles or credentials belong in public artifacts.
+Package cn.dot.budget, version4.0.0/code10, original certificate SHA256 42932ba6fc75b6e1e216b8def10e4af37bb73e6ebc9c3b94d5d6e7206b8bd5fb, APK v2/v3 signatures. Domain model.js and schema5 remain unchanged. Source, final checkpoint and APK assets are compared byte-for-byte. Signing keys, actual photos, personal records and credentials are excluded from distributable source.
 
-## Limits
-Source UX and DOM emulation are not pixel-rendered or Android device validation. Supported cloud-browser preview remained unavailable; blocked routes were not retried or bypassed. Real glass blur appearance,360/390/tablet layouts, safe areas, Android keyboard and predictive Back require device validation. No actual API credentials or user images were used. Camera,Keystore,picker,notifications,installer and automatic update installation remain untested on hardware. GitHub publication is verified separately.
+## Limitations
+Source review and emulated DOM are not rendered visual or Android device tests. Pixel appearance, device keyboard/safe areas, TalkBack, camera bitmap/EXIF processing, process-death behavior, Keystore, notifications, system installer and live API calls remain unverified on hardware. All network tests use mocks and synthetic data. No claim of server zero-retention is made. Publication status is separate from build verification.
 
 ## Reproduce
-npm install; npm test. JAVA_HOME=/path/to/jdk21 bash tests/run-native-tests.sh. Build with official Android SDK36 and own securely held signing credentials using build.sh. Source excludes private keys.
+Install jsdom26.1.0 using npm install, then npm test. With JDK21, run bash tests/run-ai-review-tests.sh and bash tests/run-native-tests.sh. Build using official Android SDK36 and your own signing credentials with build.sh. Test runners also accept JAVA_HOME. Private signing material is not included.
