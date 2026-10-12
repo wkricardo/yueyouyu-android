@@ -7,15 +7,15 @@ import java.util.Set;
 
 /** The WebView may choose a source, never a native request identity or hidden context. */
 public final class AiRequestContract {
- public static final int VERSION=1, MAX_REQUEST_BYTES=16384;
+ public static final int VERSION=1, MAX_REQUEST_BYTES=32768;
  public final int version, revision;
  public final String mode, source, clientAttempt, text, retryOf;
  public AiRequestContract(int version,String mode,String source,int revision){this(version,mode,source,revision,"legacy-"+java.util.UUID.randomUUID().toString());}
  public AiRequestContract(int version,String mode,String source,int revision,String clientAttempt){this(version,mode,source,revision,clientAttempt,null);}
  public AiRequestContract(int version,String mode,String source,int revision,String clientAttempt,String text){this(version,mode,source,revision,clientAttempt,text,null);}
  public AiRequestContract(int version,String mode,String source,int revision,String clientAttempt,String text,String retryOf){
-  if((retryOf!=null&&!retryOf.matches("[A-Za-z0-9-]{1,80}"))||version!=VERSION||revision<0||clientAttempt==null||!clientAttempt.matches("[A-Za-z0-9-]{1,80}")||!("budget".equals(mode)&&("statement_image".equals(source)||"budget_text".equals(source))||"food".equals(mode)&&("food_image".equals(source)||"food_camera".equals(source)||"food_text".equals(source))))throw new IllegalArgumentException("AI 请求不受支持");
-  boolean typed="budget_text".equals(source)||"food_text".equals(source);if(typed)validateText(text);else if(text!=null)throw new IllegalArgumentException("图片请求不能包含附加文字");this.text=text;this.retryOf=retryOf;
+  if((retryOf!=null&&!retryOf.matches("[A-Za-z0-9-]{1,80}"))||version!=VERSION||revision<0||clientAttempt==null||!clientAttempt.matches("[A-Za-z0-9-]{1,80}")||!("budget".equals(mode)&&("statement_image".equals(source)||"budget_text".equals(source))||"food".equals(mode)&&("food_image".equals(source)||"food_camera".equals(source)||"food_text".equals(source)||"health_history".equals(source))))throw new IllegalArgumentException("AI 请求不受支持");
+  boolean typed="budget_text".equals(source)||"food_text".equals(source);if("health_history".equals(source))AiHealthHistory.validate(text);else if(typed)validateText(text);else if(text!=null)throw new IllegalArgumentException("图片请求不能包含附加文字");this.text=text;this.retryOf=retryOf;
   this.version=version;this.mode=mode;this.source=source;this.revision=revision;this.clientAttempt=clientAttempt;
  }
  public static void requireRequestSize(String json){if(json==null||json.length()>MAX_REQUEST_BYTES||json.getBytes(StandardCharsets.UTF_8).length>MAX_REQUEST_BYTES)throw new IllegalArgumentException("AI 请求过大");}

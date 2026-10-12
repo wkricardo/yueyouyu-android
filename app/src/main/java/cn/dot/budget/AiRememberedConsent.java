@@ -3,7 +3,7 @@ package cn.dot.budget;
 /** Versioned native scopes. A per-use acceptance is never a persistent grant. */
 public final class AiRememberedConsent {
  public static final int VERSION=1;
- public static final String[] SCOPES={"food_image","food_text","statement_image","budget_text"};
+ public static final String[] SCOPES={"food_image","food_text","statement_image","budget_text","health_history"};
  public interface Store {int version();boolean allowed(String scope);boolean write(String scope);boolean clear();boolean empty();}
  private final Store store;
  private boolean blocked;
@@ -16,5 +16,5 @@ public final class AiRememberedConsent {
  public synchronized boolean remember(AiRequestContract request,boolean explicitlyChecked,int openedGeneration){if(!explicitlyChecked||openedGeneration!=generation)return false;try{if(store.write(scope(request))&&store.version()==VERSION&&store.allowed(scope(request))){blocked=false;return true;}}catch(RuntimeException ignored){}blocked=true;return false;}
  public boolean revoke(Runnable cancel){synchronized(this){blocked=true;generation++;}cancel.run();try{return store.clear()&&store.empty();}catch(RuntimeException e){return false;}}
  public synchronized boolean current(int openedGeneration){return generation==openedGeneration;}
- public static String label(String scope){switch(scope){case "food_image":return "食物照片（拍照或选择）";case "food_text":return "食物文字";case "statement_image":return "已遮盖敏感字段的账单图片";case "budget_text":return "已移除敏感字段的记账文字";default:throw new IllegalArgumentException();}}
+ public static String label(String scope){switch(scope){case "health_history":return "最近 7／14／30 天饮食、体重与运动摘要";case "food_image":return "食物照片（拍照或选择）";case "food_text":return "食物文字";case "statement_image":return "已遮盖敏感字段的账单图片";case "budget_text":return "已移除敏感字段的记账文字";default:throw new IllegalArgumentException();}}
 }

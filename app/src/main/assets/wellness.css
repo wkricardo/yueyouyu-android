@@ -16,3 +16,5 @@
 @media(prefers-reduced-motion:reduce){.wellness *,.wellness-entry *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 
 .wellness .wellness-ring-center strong[data-extra-long=true]{font-size:16px;line-height:1.4;letter-spacing:0}
+
+.health-trend-entry,.health-result{padding:22px;border:1px solid var(--mode-accent,#398a83);border-radius:24px;margin-bottom:22px;background:var(--card,#fff)}.health-trend-entry h3{font-size:23px;margin:8px 0}.health-trend-entry>p{line-height:1.6}.health-advice-card{padding:16px;margin:14px 0;background:var(--bg,#f5f4ee);border-radius:18px}.health-advice-card h4{margin:0 0 10px}.health-advice-card ul{padding-left:20px;margin:0}.health-advice-card li{line-height:1.65;margin-bottom:10px}.health-evidence{font-size:14px;line-height:1.65;overflow-wrap:anywhere}.health-preview pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;max-height:280px;overflow:auto;padding:12px;background:#edf2f0;border-radius:12px}.health-preview #health-send{white-space:normal;line-height:1.5;margin:18px 0 12px}.health-preview #health-preview-status{color:#8d4534}.health-result details{margin-top:16px}

@@ -5,6 +5,7 @@ JAVA_HOME="${JAVA_HOME:-$PWD/tools/jdk-21.0.2}"
 OUT="$(mktemp -d)"
 trap 'rm -rf "$OUT"' EXIT
 "$JAVA_HOME/bin/javac" -d "$OUT" \
+  app/src/main/java/cn/dot/budget/AiHealthHistory.java \
   app/src/main/java/cn/dot/budget/AiRequestContract.java \
   app/src/main/java/cn/dot/budget/AiRequestSession.java \
   app/src/main/java/cn/dot/budget/AiConsentSnapshot.java \

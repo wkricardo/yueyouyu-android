@@ -37,7 +37,7 @@ public final class AiLifecycleReviewTest {
   Set<String> fields=new HashSet<>(Arrays.asList("version","mode","source","revision","clientAttempt"));AiRequestContract.assertFields(fields);check(true);
   for(String forbidden:new String[]{"history","profile","weights","apiKey","endpoint","requestId","generation","tools"}){Set<String> extra=new HashSet<>(fields);extra.add(forbidden);rejects(()->AiRequestContract.assertFields(extra));}
   Set<String> missing=new HashSet<>(fields);missing.remove("revision");rejects(()->AiRequestContract.assertFields(missing));
-  AiRequestContract.requireRequestSize(repeat("a",16384));check(true);rejects(()->AiRequestContract.requireRequestSize(repeat("a",16385)));rejects(()->AiRequestContract.requireRequestSize(repeat("界",5462)));rejects(()->AiRequestContract.requireRequestSize(null));
+  AiRequestContract.requireRequestSize(repeat("a",AiRequestContract.MAX_REQUEST_BYTES));check(true);rejects(()->AiRequestContract.requireRequestSize(repeat("a",AiRequestContract.MAX_REQUEST_BYTES+1)));rejects(()->AiRequestContract.requireRequestSize(repeat("界",AiRequestContract.MAX_REQUEST_BYTES/3+1)));rejects(()->AiRequestContract.requireRequestSize(null));
   AiRequestContract request=new AiRequestContract(1,"budget","statement_image",3);AiRequestSession session=new AiRequestSession();
   check(!session.busy());check(!session.isCurrent(null));rejects(()->session.reserve(null));
   AiRequestSession.Ticket first=session.reserve(request);check(first!=null);check(session.busy());check(session.isCurrent(first));check(first.request==request);check(first.generation==1);check(first.id.matches("[A-Za-z0-9-]{1,80}"));check(session.reserve(request)==null);
