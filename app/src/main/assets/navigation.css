@@ -25,3 +25,28 @@ body.navigation-keyboard-open .floating-navigation,body.navigation-dialog-open .
 /* Keep small labels above 4.5:1 even with dark content beneath the glass. */
 .floating-navigation .navigation-destination{color:#526175}
 .floating-navigation .navigation-destination[aria-current=page]{color:var(--accent-ink)}
+/* Unified home entry surface: two choices, one active set of inputs. */
+#home-entry{margin:4px 0 24px;min-width:0}
+.home-entry-heading,.home-panel-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.home-entry-heading{margin:8px 0 16px}.home-entry-heading h2{margin:2px 0 0;font-size:25px;letter-spacing:-.04em}.home-entry-heading .eyebrow{margin:0 0 6px}.home-local{font-size:11px;color:#526175;white-space:nowrap}
+.home-entry-toggles{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.home-budget{--entry-ink:var(--budget-ink,#3D648D);--entry-soft:var(--budget-soft,#EEF2F7);--entry-accent:var(--budget-accent,#527BA8)}
+.home-food{--entry-ink:var(--food-ink,#286C65);--entry-soft:var(--food-soft,#EBF4F3);--entry-accent:var(--food-accent,#398A83)}
+.home-group-toggle{position:relative;display:flex;align-items:flex-start;flex-direction:column;gap:6px;padding:18px 16px;min-height:136px;border:1px solid transparent;border-radius:23px;color:var(--entry-ink);background:var(--entry-soft);text-align:left;box-shadow:0 4px 14px #22364c06}
+.home-group-toggle>span:first-child{font-size:27px;line-height:1.2}.home-group-toggle b{font-size:19px}.home-group-toggle small{font-size:12px;line-height:1.5;font-weight:500;color:var(--entry-ink)}
+.home-group-toggle .home-chevron{position:absolute;right:16px;top:18px;font-size:22px;transition:transform .15s}.home-group-toggle[aria-expanded=true]{border-color:var(--entry-accent);box-shadow:0 0 0 2px var(--entry-soft)}.home-group-toggle[aria-expanded=true] .home-chevron{transform:rotate(180deg)}
+.home-input-panel{margin-top:12px;padding:16px;border:1px solid var(--entry-soft);border-radius:22px;background:#fff;box-shadow:0 7px 20px #263e5908;min-width:0}
+.home-panel-heading{margin-bottom:10px}.home-panel-heading h3{margin:0;font-size:17px;color:var(--entry-ink)}
+.home-input-actions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+#home-entry button{min-height:48px;max-width:100%;overflow-wrap:anywhere}
+#home-entry .home-input-actions button{margin:0;width:100%;padding:12px 10px;color:var(--entry-ink);background:var(--entry-soft);border:1px solid transparent;font-size:14px;line-height:1.45;min-width:0}
+#home-entry .home-input-actions button:focus-visible,#home-entry button:focus-visible{outline:3px solid var(--entry-ink);outline-offset:3px}
+#home-entry .home-panel-heading button,#home-entry .wellness-favorites-section button{color:var(--entry-ink)}
+#home-entry .budget-capture-card{margin:14px 0 0;padding:14px;box-shadow:none;background:var(--entry-soft);border:0;border-radius:15px}
+#home-entry .budget-capture-card .budget-capture-symbol{display:none}#home-entry .budget-capture-card h3{font-size:14px;margin:0 0 8px}#home-entry .budget-capture-card p{font-size:12px}
+#home-entry .wellness-favorites-section{margin:18px 0 0;padding:0}#home-entry .wellness-favorites-section .section-head{gap:8px;flex-wrap:wrap}#home-entry .wellness-favorites-section .section-head h3{flex:1;font-size:14px}
+#home-entry .wellness-favorites-strip{padding:4px 2px 10px}#home-entry .quiet{font-size:12px;line-height:1.75}
+body.home-entry-visible .mode-switch{margin-top:4px}.mode-switch::before{content:'查看';align-self:center;font-size:12px;color:#526175;padding:0 3px}
+@media(max-width:380px){.home-entry-heading h2{font-size:23px}.home-local{display:none}.home-entry-toggles{gap:10px}.home-group-toggle{padding:16px 13px}.home-group-toggle b{font-size:18px}.home-group-toggle small{font-size:11px}.home-input-panel{padding:13px}.home-input-actions{gap:8px}}
+@media(prefers-reduced-motion:reduce){.home-group-toggle .home-chevron{transition:none}}
+.home-entry-date{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;color:var(--entry-ink);margin:12px 0}.home-entry-date input{width:165px;max-width:60%;min-height:48px;margin:0;background:#fff;border-color:var(--entry-soft);font-size:14px}
