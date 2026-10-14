@@ -1,10 +1,11 @@
 (function(){'use strict';
 let largestHeight=0,lastWidth=window.innerWidth,initialized=false;
 const dialogStack=[];
-function beforeDialogOpen(dialog){const index=dialogStack.indexOf(dialog);if(index!==-1)dialogStack.splice(index,1);dialogStack.push(dialog);}
+function beforeDialogOpen(dialog){const index=dialogStack.indexOf(dialog);if(index!==-1)dialogStack.splice(index,1);dialogStack.push(dialog);document.body.classList.add('navigation-dialog-open');}
 function topDialog(){for(let index=dialogStack.length-1;index>=0;index--)if(dialogStack[index].isConnected&&dialogStack[index].open)return dialogStack[index];return [...document.querySelectorAll('dialog[open]')].at(-1)||null;}
 function syncViewport(){
  const viewport=window.visualViewport,height=viewport?viewport.height:window.innerHeight;
+ document.documentElement.style.setProperty('--entry-viewport-height',Math.max(0,height)+'px');
  const focused=document.activeElement,editing=!!(focused&&focused.matches('input:not([type=checkbox]):not([type=radio]),textarea,select,[contenteditable=true]'));
  if(!editing||Math.abs(window.innerWidth-lastWidth)>80)largestHeight=Math.max(window.innerHeight,height);
  lastWidth=window.innerWidth;
@@ -22,6 +23,7 @@ function init(){
   if(source)button.querySelector('span').replaceWith(source.cloneNode(true));
  }
  window.addEventListener('resize',syncViewport);if(window.visualViewport)window.visualViewport.addEventListener('resize',syncViewport);
+ document.addEventListener('close',event=>{if(event.target.tagName==='DIALOG')syncViewport();},true);
  document.addEventListener('focusin',syncViewport);document.addEventListener('focusout',()=>setTimeout(syncViewport,0));
  if(window.MutationObserver){const observer=new MutationObserver(records=>{if(records.some(record=>record.type==='attributes'?record.target.tagName==='DIALOG':[...record.addedNodes,...record.removedNodes].some(node=>node.nodeType===1&&(node.matches('dialog')||node.querySelector('dialog')))))syncViewport();});observer.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['open']});}
  syncViewport();

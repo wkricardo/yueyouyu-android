@@ -1,30 +1,20 @@
-# Android 4.2.0 verification
+# Android4.3.0 verification
 
-## Unified entry workflow
-Fresh launch shows the shared first/home page. Two side-by-side expandable groups hold the existing unique input controls: accounting on the left; food, weight and exercise on the right. Food camera and gallery actions are adjacent and explicitly named. Report/trend/plan pages and historical-record editing remain. Contextual new-record actions return to the same home/form; deliberate continuation actions such as copying a saved meal to a favorite retain their task context.
+## Workflow
+Two compact home corner controls replace the large input groups: accounting at lower left, health at lower right. Only AI and Manual appear in each first expansion. Secondary choices retain the unique original controls and dates. Health AI explicitly offers camera, gallery and text. Reports/trends/plans and contextual historical edits remain.
 
-Home date selectors expose accounting and food/exercise dates before opening inputs. Independent mode palettes use per-group contrast-safe tokens. Groups use aria-expanded/controls, keyboard focus, bounded columns and48px minimum controls; bottom navigation retains modal/keyboard/safe-area behavior. These are source/DOM checks, not visual rendering claims.
+Reference pixels were inspected; implementation adapts a small radial fan with central close affordance. Source/DOM checks cover outside/Back/Escape dismissal, keyboard focus recovery/exit, one open group, minimum targets, reduced motion, distinct palettes, bottom-navigation clearance and safe areas. Draft protection and deferred AI receipt validation remain authoritative. No automatic record writes.
 
-Draft baselines cover accounting, food, weight, exercise, favorites and profile forms. Declined Close/Back/Escape/switch preserves inputs; confirmed switches are explicit; repeated opens do not reset drafts. Modern AI callbacks retain validated delayed-result handling. Direct legacy food/bank callbacks cannot nest over unrelated manual dialogs or active settings edits; they show a local notice without introducing unverifiable deferred results. No callback writes records automatically.
+## Native behavior
+Gallery remains ACTION_GET_CONTENT(image/*,CATEGORY_OPENABLE), camera uses its separate source. No broad storage permission. Native Java and domain model are unchanged from4.2.0: bounded compression, EXIF handling, scoped consent, private camera URI ownership, cancellation, health privacy and signed updater checks remain. Schema5 data unchanged.
 
-## Gallery path
-The previous version already contained chooseFoodPhoto and food_image native handling; the visible shortcut emphasized camera while gallery was deeper in the food log. This release makes gallery visible in the home health group. Native Java is byte-identical to4.1.0: ACTION_GET_CONTENT(image/*, CATEGORY_OPENABLE), no broad photo/storage permission, selected URI only, same compression/EXIF/size bounds, native consent, cancellation and request ownership. No live phone picker was exercised.
+## Checks
+275 JavaScript/model/actual app.js jsdom tests pass, including15 independent corner-entry cases. They cover24 dismissal combinations,8 late-result chooser races, dirty drafts, gallery source identity, keyboard focus-exit dismissal, favorites-management mode change and pending-owner decline/accept. Native reruns pass118 original assertions,1244 AI lifecycle assertions,53 image and23 text payload assertions,130 image/consent checks,176 independent image-policy checks and591 health JVM assertions with synthetic parity fixtures.
 
-## Final passed checks
-- 260 JavaScript/model/actual app.js jsdom tests:240 previous plus20 independent unified-entry cases.
-- Native118 assertions:21 transport,66 updater,31 private provider.
-- AI lifecycle1,244 JVM assertions and53 image +23 text request parsing assertions.
-- Image/consent patch130 focused +176 independent checks.
-- Health summary591 independent JVM assertions, with JS parity fixtures.
-- Clean Android36 build after generated intermediate cleanup; same package/signature; asset/source parity checked.
-
-Coverage includes mode/home routing, single gallery/camera source identity, repeated chooser cancellation and stale callbacks, declined/accepted owner change, dirty-form focus retention, new date binding, label shortcut focus, same-mode switch, single saves, contextual edit origin, shared-settings return, keyboard/modal navigation, modern deferred AI and both legacy callback guards. Three old test expectations were adjusted for moved camera control, new-entry home origin and refusal of legacy nested takeover; privacy and replacement assertions remain.
-
-## Integrity
-Package cn.dot.budget, version4.2.0/code13; original certificate SHA25642932ba6fc75b6e1e216b8def10e4af37bb73e6ebc9c3b94d5d6e7206b8bd5fb; APK v2/v3. Native Java and domain model.js match4.1.0; model SHA25668054188359ec92ea4faa849416440e144d9c4d1c528197058ad0178a6154077. Existing schema5 storage remains unchanged. Public source excludes private signing material, photos, personal records, tools/build caches and credentials.
+Build cleans generated class/resource/dex intermediates. Package cn.dot.budget,4.3.0/code14; original certificate SHA25642932ba6fc75b6e1e216b8def10e4af37bb73e6ebc9c3b94d5d6e7206b8bd5fb with v2/v3 APK signing. Public source excludes signing keys, photos, user records, tools/build caches and credentials.
 
 ## Limits
-No rendered-pixel or Android-device validation, real photo-picker/camera execution, keyboard/insets/TalkBack hardware validation, installation/upgrade test or live DeepSeek request. All input fixtures are synthetic; no private photos/health/financial data were transmitted. DOM tests emulate dialogs and native bridges. GitHub publication is outside this build's completed actions.
+No rendered-pixel or real Android camera/gallery, keyboard/insets, TalkBack, installation/upgrade or live DeepSeek test. DOM dialogs/native bridges are emulated. All data fixtures are synthetic; no private photos/health/financial data transmitted. Publication is separately verified.
 
 ## Reproduce
 npm install; npm test. With JDK21 run bash tests/run-native-tests.sh, tests/run-ai-review-tests.sh, tests/run-v401-tests.sh, tests/run-v401-independent-review.sh and tests/run-v410-independent-review.sh. Runners accept JAVA_HOME. Use official Android SDK36 and your own signing credentials with build.sh; private keys are intentionally absent.
