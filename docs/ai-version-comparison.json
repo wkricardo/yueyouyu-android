@@ -1,0 +1,30 @@
+{
+  "4.0.1": {
+    "app/src/main/java/cn/dot/budget/DeepSeekTransport.java": "e1b0279599332fea47654f1f5a22bde4e653529d91163af4d2ecb576c81b3c67",
+    "app/src/main/java/cn/dot/budget/StatementImport.java": "89b232857c372f310eede421014d3c8a2807ff66d31a3d3e0d730832b1aca10d",
+    "app/src/main/java/cn/dot/budget/MainActivity.java": "c34d64c02db820476965bddf8717f2661f614001c45eab5a7c3dc10a6c8a4da0",
+    "app/src/main/java/cn/dot/budget/AiDeliveryGate.java": "b1a06ee13205181b37e66fd4a5c8b2aa1ceac653f68357fd48aa52d84af4457d",
+    "app/src/main/assets/app.js": "7f92e344dbeaeac5e069fd25267ef7cf031095a1e34bb0995e450cccc854e662"
+  },
+  "4.1.0": {
+    "app/src/main/java/cn/dot/budget/DeepSeekTransport.java": "e1b0279599332fea47654f1f5a22bde4e653529d91163af4d2ecb576c81b3c67",
+    "app/src/main/java/cn/dot/budget/StatementImport.java": "efd12ef35f001040603b80b851995e9938723f7c02e44968f5f9f6b64ec50d1f",
+    "app/src/main/java/cn/dot/budget/MainActivity.java": "c34d64c02db820476965bddf8717f2661f614001c45eab5a7c3dc10a6c8a4da0",
+    "app/src/main/java/cn/dot/budget/AiDeliveryGate.java": "b1a06ee13205181b37e66fd4a5c8b2aa1ceac653f68357fd48aa52d84af4457d",
+    "app/src/main/assets/app.js": "2d5eca7f6178bd4f00199e1d2eac7cca88e50576996d8f6000ac1a42e5a4d502"
+  },
+  "4.2.0": {
+    "app/src/main/java/cn/dot/budget/DeepSeekTransport.java": "e1b0279599332fea47654f1f5a22bde4e653529d91163af4d2ecb576c81b3c67",
+    "app/src/main/java/cn/dot/budget/StatementImport.java": "efd12ef35f001040603b80b851995e9938723f7c02e44968f5f9f6b64ec50d1f",
+    "app/src/main/java/cn/dot/budget/MainActivity.java": "c34d64c02db820476965bddf8717f2661f614001c45eab5a7c3dc10a6c8a4da0",
+    "app/src/main/java/cn/dot/budget/AiDeliveryGate.java": "b1a06ee13205181b37e66fd4a5c8b2aa1ceac653f68357fd48aa52d84af4457d",
+    "app/src/main/assets/app.js": "6eec786e25c5a6952c6bdef13310bbfead77a3323a1f2a21ad09bfec6984431f"
+  },
+  "4.3.0": {
+    "app/src/main/java/cn/dot/budget/DeepSeekTransport.java": "e1b0279599332fea47654f1f5a22bde4e653529d91163af4d2ecb576c81b3c67",
+    "app/src/main/java/cn/dot/budget/StatementImport.java": "efd12ef35f001040603b80b851995e9938723f7c02e44968f5f9f6b64ec50d1f",
+    "app/src/main/java/cn/dot/budget/MainActivity.java": "c34d64c02db820476965bddf8717f2661f614001c45eab5a7c3dc10a6c8a4da0",
+    "app/src/main/java/cn/dot/budget/AiDeliveryGate.java": "b1a06ee13205181b37e66fd4a5c8b2aa1ceac653f68357fd48aa52d84af4457d",
+    "app/src/main/assets/app.js": "886935ea28f485719d60a5d0fa082a4e9d15db583336c134205a6211eebf0c09"
+  }
+}

@@ -1,18 +1,18 @@
 Note: app/src/main/java/cn/dot/budget/DeepSeekTransport.java uses or overrides a deprecated API.
 Note: Recompile with -Xlint:deprecation for details.
 PASS independent health review: 591 JVM assertions; synthetic fixtures, no network or real health data.
-✔ independent: every period includes exact end date and handles leap/month/year boundaries (5.358557ms)
-✔ independent: range is inclusive and excludes future and prior observations (1.802702ms)
-✔ independent: payload contains no finances, profile, identifiers, free text or secrets (0.876297ms)
-✔ independent: arbitrary exercise names including prototype keys map safely to other (1.122019ms)
-✔ independent: missing observations stay null and are never zero-filled by completion flag (0.351249ms)
-✔ independent: true zero nutrition remains distinct from absent nutrition (0.287476ms)
-✔ independent: same-day weights use order-independent mean, not id or insertion order (0.399131ms)
-✔ independent: weekly slope uses actual elapsed days rather than observation indexes (1.205663ms)
-✔ independent: many same-day measurements and three long-spaced days cannot create trend (2.721045ms)
-✔ independent: strict schema rejects hidden fields, duplicate dates, null substitutions and invalid numbers (4.761634ms)
-✔ independent: only context-supported assessment and trend codes accepted (6.498914ms)
-✔ independent: advice cannot smuggle prose, instructions, treatment, duplicate or unbounded output (3.417956ms)
+✔ independent: every period includes exact end date and handles leap/month/year boundaries (4.63751ms)
+✔ independent: range is inclusive and excludes future and prior observations (1.804089ms)
+✔ independent: payload contains no finances, profile, identifiers, free text or secrets (0.705925ms)
+✔ independent: arbitrary exercise names including prototype keys map safely to other (1.023905ms)
+✔ independent: missing observations stay null and are never zero-filled by completion flag (0.241267ms)
+✔ independent: true zero nutrition remains distinct from absent nutrition (0.261587ms)
+✔ independent: same-day weights use order-independent mean, not id or insertion order (0.508382ms)
+✔ independent: weekly slope uses actual elapsed days rather than observation indexes (0.850297ms)
+✔ independent: many same-day measurements and three long-spaced days cannot create trend (2.598013ms)
+✔ independent: strict schema rejects hidden fields, duplicate dates, null substitutions and invalid numbers (3.583421ms)
+✔ independent: only context-supported assessment and trend codes accepted (5.487879ms)
+✔ independent: advice cannot smuggle prose, instructions, treatment, duplicate or unbounded output (4.129118ms)
 ℹ tests 12
 ℹ suites 0
 ℹ pass 12
@@ -20,4 +20,4 @@ PASS independent health review: 591 JVM assertions; synthetic fixtures, no netwo
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 127.92169
+ℹ duration_ms 113.492915

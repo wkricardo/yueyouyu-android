@@ -1,0 +1,9 @@
+tests/v431-review/baseline/DeepSeekTransport.java: OK
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+BASELINE4.3 continuous whitespace (88 reads): still pending after450ms observation; harness cancellation used for cleanup. This observation alone does not claim the production120s idle timeout elapsed.
+BASELINE4.3 blocked upload: still pending after450ms observation; harness cancellation used for cleanup. This observation alone does not claim the production120s idle timeout elapsed.
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+PATCHED continuous whitespace: returned timeout without harness cancellation (injected total180ms/upload90ms).
+PATCHED blocked upload: returned timeout without harness cancellation (injected total180ms/upload90ms).

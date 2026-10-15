@@ -18,7 +18,7 @@ public final class AiErrors {
   case "auth":return new Info(code,"API 密钥无效或权限不足。请重新配置密钥后，再次选择输入并确认发送。","configure");
   case "balance":return new Info(code,"DeepSeek 账户余额不足。请先检查账户余额，再自行重新选择输入。","account");
   case "rate":return new Info(code,"请求过于频繁。请稍后自行重试，每次发送都需重新确认。","wait");
-  case "timeout":return new Info(code,"连接或识别超时。可继续手动记录，或检查网络后重新选择输入。","reselect");
+  case "timeout":return new Info(code,"上传或等待结果已超时，未保存数据。上传最多等待 30 秒，本次网络请求最多 2 分钟；可检查网络后主动重试，或继续手动记录。","reselect");
   case "input":return new Info(code,"无法读取输入。请选择清晰且不超过 10 MB 的 PNG、JPEG 或 WebP；过大或过长的账单请分段截图，应用不会缩小文字。","reselect");
   case "parse":return new Info(code,"结果为空、不完整或格式无效，原草稿保持不变。请缩小输入范围或手动补充。","edit");
   case "cancelled":return new Info(code,"本次识别已取消，未保存数据。","none");

@@ -1,0 +1,48 @@
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+PASS: 99 independent total/upload timeout, active-whitespace, non-interruptible I/O, blocked-disconnect, cancellation and late-success assertions. No network or real credentials used.
+✔ independent exact owned success exits waiting: statement_image (377.407643ms)
+✔ independent timeout exits waiting and explicit retry owns a new attempt: statement_image (193.120536ms)
+✔ independent cancel exits waiting and rejects late completion: statement_image (130.176126ms)
+✔ independent exact owned success exits waiting: budget_text (159.291965ms)
+✔ independent timeout exits waiting and explicit retry owns a new attempt: budget_text (145.653341ms)
+✔ independent cancel exits waiting and rejects late completion: budget_text (142.590799ms)
+✔ independent exact owned success exits waiting: food_image (162.851521ms)
+✔ independent timeout exits waiting and explicit retry owns a new attempt: food_image (144.736845ms)
+✔ independent cancel exits waiting and rejects late completion: food_image (131.46293ms)
+✔ independent exact owned success exits waiting: food_camera (153.222697ms)
+✔ independent timeout exits waiting and explicit retry owns a new attempt: food_camera (144.574494ms)
+✔ independent cancel exits waiting and rejects late completion: food_camera (128.493136ms)
+✔ independent exact owned success exits waiting: food_text (123.752093ms)
+✔ independent timeout exits waiting and explicit retry owns a new attempt: food_text (131.084479ms)
+✔ independent cancel exits waiting and rejects late completion: food_text (114.308563ms)
+✔ independent exact owned success exits waiting: health_history (128.588156ms)
+✔ independent timeout exits waiting and explicit retry owns a new attempt: health_history (125.634267ms)
+✔ independent cancel exits waiting and rejects late completion: health_history (115.203167ms)
+✔ independent missing native acknowledgement has bounded wait and allows fresh input: statement_image (128.497061ms)
+✔ independent missing terminal callback expires despite duplicate sending phases: statement_image (99.498926ms)
+✔ independent consent remains user paced and a valid result clears the watchdog: statement_image (119.820576ms)
+✔ independent missing native acknowledgement has bounded wait and allows fresh input: budget_text (126.888442ms)
+✔ independent missing terminal callback expires despite duplicate sending phases: budget_text (96.648338ms)
+✔ independent consent remains user paced and a valid result clears the watchdog: budget_text (118.557599ms)
+✔ independent missing native acknowledgement has bounded wait and allows fresh input: food_image (122.529003ms)
+✔ independent missing terminal callback expires despite duplicate sending phases: food_image (109.029304ms)
+✔ independent consent remains user paced and a valid result clears the watchdog: food_image (112.069972ms)
+✔ independent missing native acknowledgement has bounded wait and allows fresh input: food_camera (127.188296ms)
+✔ independent missing terminal callback expires despite duplicate sending phases: food_camera (112.480649ms)
+✔ independent consent remains user paced and a valid result clears the watchdog: food_camera (111.231912ms)
+✔ independent missing native acknowledgement has bounded wait and allows fresh input: food_text (117.078931ms)
+✔ independent missing terminal callback expires despite duplicate sending phases: food_text (108.078357ms)
+✔ independent consent remains user paced and a valid result clears the watchdog: food_text (110.293443ms)
+✔ independent missing native acknowledgement has bounded wait and allows fresh input: health_history (119.272116ms)
+✔ independent missing terminal callback expires despite duplicate sending phases: health_history (113.848653ms)
+✔ independent consent remains user paced and a valid result clears the watchdog: health_history (116.7003ms)
+✔ independent cleared old timer cannot cancel a newer owner even if delivered late (121.402787ms)
+ℹ tests 37
+ℹ suites 0
+ℹ pass 37
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5424.22453
